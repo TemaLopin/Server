@@ -1,0 +1,7 @@
+.env
+.env.example
+.env.local
+.env.staging
+README.md
+
+/node_modules
