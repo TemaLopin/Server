@@ -8,10 +8,10 @@ app.use(express.urlencoded({extended:false}))
 app.use(express.json())
 app.use("/", require('./Routes/todo.get'))
 app.use("/", require('./Routes/todo.delete'))
-app.use('/', require('./Routes/todo.post'))
-app.use('/', require('./Routes/todo.patch'))
+app.use("/", require('./Routes/todo.post'))
+app.use("/", require('./Routes/todo.patch'))
 
 
 
 
-app.listen(4000)
+app.listen(5000)

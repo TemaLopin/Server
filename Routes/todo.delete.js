@@ -9,8 +9,8 @@ router.delete("/todo/:uuid", (req, res) => {
         const todos = JSON.parse(data);
         const deletedTask = todos.find(item => item.uuid === uuid)
         newTasks = todos.filter((task) => task.uuid !== deletedTask.uuid)
-        fs.writeFile("data.json", JSON.stringify(newTasks));
-        return res.send(`Task with uuid ${deletedTask.uuid} was deleted`);
+        fs.writeFile("todoList.json", JSON.stringify(newTasks));
+        return res.send(`Task was deleted`);
       })
   });
 

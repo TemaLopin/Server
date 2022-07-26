@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const fs = require("fs").promises;
 
-router.get("/todos", (req, res) => {
+router.get("/todos/", (req, res) => {
   fs.readFile("todoList.json").then((date) => {
     let todos = JSON.parse(date);
     if (req.query.filterBy === "done") {
