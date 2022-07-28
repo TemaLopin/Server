@@ -10,9 +10,9 @@ router.patch("/todo/:uuid", async (req, res) => {
       body,
     } = req;
 
-    const regExp = /[a-zA-Z0-9]/g;
-    if (body.name !== undefined) {
-      if (!body.name || !regExp.test(body.name)) {
+    const addiction = /[a-zA-Z0-9А-Яа-я]/g;
+    if (body.name) {
+      if (!body.name || !addiction.test(body.name)) {
         return res
           .status(422)
           .send("Invalid fields in request! Try to rewrite your task");

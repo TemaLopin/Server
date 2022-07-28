@@ -3,5 +3,5 @@
 .env.local
 .env.staging
 README.md
-data.json
+test.json
 /node_modules

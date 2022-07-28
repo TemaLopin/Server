@@ -7,8 +7,8 @@ const router = express.Router();
 
 router.post("/todos", async (req, res) => {
   try {
-    const regExp = /[a-zA-Z0-9]/g;
-    if (!req.body.name || !regExp.test(req.body.name)) {
+    const addiction = /[a-zA-Z0-9А-Яа-я]/g;
+    if (!req.body.name || !addiction.test(req.body.name)) {
       return res
         .status(422)
         .send("Invalid fields in request! Try to rewrite your task");
