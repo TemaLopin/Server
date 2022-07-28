@@ -1,6 +1,7 @@
 const express = require("express");
 const fs = require("fs").promises;
-const {COUNT_SYMBOL_IN_TASK} = require('../constant/constant')
+const { COUNT_SYMBOL_IN_TASK } = require("../constant/constant");
+const { twinTask } = require("../Utilits/checkOnTwinTask");
 const router = express.Router();
 
 router.patch("/todo/:uuid", async (req, res) => {
@@ -18,7 +19,7 @@ router.patch("/todo/:uuid", async (req, res) => {
           .send("Invalid fields in request! Try to rewrite your task");
       }
       if (body.name.length > COUNT_SYMBOL_IN_TASK) {
-        res.status(500).send("Too many symbols. Max is 250");
+        return res.status(500).send("Too many symbols. Max is 250");
       }
     }
 
@@ -38,13 +39,13 @@ router.patch("/todo/:uuid", async (req, res) => {
 
     const newTasks = todos.map((item) => {
       if (item.uuid === uuid) {
-        const newItem = { ...item, ...body, updateAt: new Date()};
+        const newItem = { ...item, ...body, updateAt: new Date() };
         return newItem;
       }
       return item;
     });
 
-    fs.writeFile("todoList.json", JSON.stringify(newTasks, null, '\t'));
+    fs.writeFile("todoList.json", JSON.stringify(newTasks, null, "\t"));
 
     return res.send(updatedTask);
   } catch (err) {

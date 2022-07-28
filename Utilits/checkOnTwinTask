@@ -1,0 +1,13 @@
+const twinTask = (todos, bodyName, uuid) => {
+  const findTwinTask = todos.find(
+    (item) => item.name === bodyName && item.uuid !== uuid
+  );
+  if (findTwinTask) {
+    return {
+      status: 400,
+      message: "Task not created! Maybe the same task already exists",
+    };
+  }
+};
+
+module.exports.twinTask = twinTask;

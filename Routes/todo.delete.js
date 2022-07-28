@@ -16,7 +16,7 @@ router.delete("/todo/:uuid", async (req, res) => {
     if (!deletedTask) {
       return res.status(404).send("Task not found");
     }
-    newTasks = todos.filter((task) => task.uuid !== deletedTask.uuid);
+    const newTasks = todos.filter((task) => task.uuid !== deletedTask.uuid);
     fs.writeFile("todoList.json", JSON.stringify(newTasks, null, '\t'));
     return res.send(`Task with uuid ${deletedTask.uuid} was deleted`);
   } catch (err) {

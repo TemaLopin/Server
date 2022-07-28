@@ -1,6 +1,6 @@
 const express = require("express");
 const fs = require("fs").promises;
-const {COUNT_SYMBOL_IN_TASK} = require('../constant/constant')
+const { COUNT_SYMBOL_IN_TASK } = require("../constant/constant");
 const uuid = require("uuid");
 
 const router = express.Router();
@@ -32,7 +32,7 @@ router.post("/todos", async (req, res) => {
       uuid: uuid.v4(),
       done: false,
       createdAt: new Date(),
-      updateAt: new Date()
+      updateAt: new Date(),
     };
     todos.push(createdTask);
     fs.writeFile("todoList.json", JSON.stringify(todos, null, "\t"));
