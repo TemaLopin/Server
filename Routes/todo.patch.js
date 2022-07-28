@@ -38,7 +38,7 @@ router.patch("/todo/:uuid", async (req, res) => {
 
     const newTasks = todos.map((item) => {
       if (item.uuid === uuid) {
-        const newItem = { ...item, ...body, updateAT: new Date()};
+        const newItem = { ...item, ...body, updateAt: new Date()};
         return newItem;
       }
       return item;

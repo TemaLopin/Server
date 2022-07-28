@@ -1,5 +1,4 @@
 const express = require("express");
-const { defaultError } = require("../Utilits/ErrorMessage");
 const fs = require("fs").promises;
 
 const router = express.Router();
@@ -18,7 +17,7 @@ router.delete("/todo/:uuid", async (req, res) => {
       return res.status(404).send("Task not found");
     }
     newTasks = todos.filter((task) => task.uuid !== deletedTask.uuid);
-    fs.writeFile("todoList.json", JSON.stringify(newTasks));
+    fs.writeFile("todoList.json", JSON.stringify(newTasks, null, '\t'));
     return res.send(`Task with uuid ${deletedTask.uuid} was deleted`);
   } catch (err) {
     res.status(err.status).send(err);
